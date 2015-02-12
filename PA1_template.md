@@ -1,3 +1,8 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
 Reproducible Research
 =====================
 ## Course Assignment 1
@@ -29,7 +34,7 @@ names(stepsByDay) <- c("date","steps")
 hist(stepsByDay$steps, xlab="steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 Then, compute the mean and median of the steps taken per day:
 
@@ -58,7 +63,7 @@ names(stepsByInterval) <- c("interval","steps")
 plot(stepsByInterval,type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 Compute the maximum average interval:
 
@@ -82,7 +87,7 @@ names(steps_imputedByDate) <- c("date","steps")
 hist(steps_imputedByDate$steps, xlab="steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 ```r
 mean(steps_imputedByDate$steps)
@@ -118,5 +123,5 @@ names(stepsByDaytype) = c("dayType","interval","steps")
 ggplot(stepsByDaytype,aes(interval,steps)) + geom_line() + facet_grid(dayType ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
