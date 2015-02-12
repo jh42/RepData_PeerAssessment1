@@ -26,10 +26,10 @@ First, aggregate the step data by date and show a histogram:
 ```r
 stepsByDay <- aggregate(data$steps,list(data$date),FUN=sum)
 names(stepsByDay) <- c("date","steps")
-hist(stepsByDay$steps, xlab="steps")
+hist(stepsByDay$steps, xlab="steps", breaks=20)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 Then, compute the mean and median of the steps taken per day:
 
@@ -58,7 +58,7 @@ names(stepsByInterval) <- c("interval","steps")
 plot(stepsByInterval,type="l")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 Compute the maximum average interval:
 
@@ -79,10 +79,10 @@ steps_imputed <- merge(data, stepsByInterval, by.x="interval", by.y="interval")
 steps_imputed$steps_imp <- ifelse(is.na(steps_imputed$steps.x), steps_imputed$steps.y, steps_imputed$steps.x)
 steps_imputedByDate <- aggregate(steps_imputed$steps_imp, list(steps_imputed$date), FUN=sum)
 names(steps_imputedByDate) <- c("date","steps")
-hist(steps_imputedByDate$steps, xlab="steps")
+hist(steps_imputedByDate$steps, xlab="steps", breaks=20)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
 
 ```r
 mean(steps_imputedByDate$steps)
@@ -118,5 +118,5 @@ names(stepsByDaytype) = c("dayType","interval","steps")
 ggplot(stepsByDaytype,aes(interval,steps)) + geom_line() + facet_grid(dayType ~ .)
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 

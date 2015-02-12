@@ -28,7 +28,7 @@ First, aggregate the step data by date and show a histogram:
 ```{r}
 stepsByDay <- aggregate(data$steps,list(data$date),FUN=sum)
 names(stepsByDay) <- c("date","steps")
-hist(stepsByDay$steps, xlab="steps")
+hist(stepsByDay$steps, xlab="steps", breaks=20)
 ```
 
 Then, compute the mean and median of the steps taken per day:
@@ -57,7 +57,7 @@ steps_imputed <- merge(data, stepsByInterval, by.x="interval", by.y="interval")
 steps_imputed$steps_imp <- ifelse(is.na(steps_imputed$steps.x), steps_imputed$steps.y, steps_imputed$steps.x)
 steps_imputedByDate <- aggregate(steps_imputed$steps_imp, list(steps_imputed$date), FUN=sum)
 names(steps_imputedByDate) <- c("date","steps")
-hist(steps_imputedByDate$steps, xlab="steps")
+hist(steps_imputedByDate$steps, xlab="steps", breaks=20)
 mean(steps_imputedByDate$steps)
 median(steps_imputedByDate$steps)
 ```
